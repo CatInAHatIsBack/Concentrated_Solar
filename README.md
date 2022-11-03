@@ -1,7 +1,7 @@
 To install:
 ```bash
 git clone https://github.com/CatInAHatIsBack/Concentrated_Solar.git
-cd Solar_thermal
+cd Concentrated_Solar
 npm i
 ```
 
