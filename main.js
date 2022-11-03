@@ -93,7 +93,11 @@ function initSky() {
 
   /// GUI
 
-  
+  function changeGui() {
+    guiChanged()
+    guiChanged()
+
+  }
 
   function guiChanged() {
 
@@ -113,6 +117,8 @@ function initSky() {
     const Sun_phi = THREE.MathUtils.degToRad( 90 - a);
     const Sun_theta = THREE.MathUtils.degToRad( 180 - b);
     sun.setFromSphericalCoords( 1, Sun_phi, Sun_theta );
+    console.log(`index ${index}`)
+    // console.log(`Sun.x ${sun.position.x}`)
 
     uniforms[ 'sunPosition' ].value.copy( sun );
 
@@ -150,27 +156,27 @@ function initSky() {
   const gui = new GUI();
 
   const light_folder = gui.addFolder('Lighting')
-  light_folder.add( effectController, 'turbidity', 0.0, 20.0, 0.1 ).onChange( guiChanged );
-  light_folder.add( effectController, 'rayleigh', 0.0, 4, 0.001 ).onChange( guiChanged );
-  light_folder.add( effectController, 'exposure', 0, 1, 0.0001 ).onChange( guiChanged );
+  light_folder.add( effectController, 'turbidity', 0.0, 20.0, 0.1 ).onChange( changeGui );
+  light_folder.add( effectController, 'rayleigh', 0.0, 4, 0.001 ).onChange( changeGui );
+  light_folder.add( effectController, 'exposure', 0, 1, 0.0001 ).onChange( changeGui );
 
 
   const mirror_folder= gui.addFolder('Mirror position') 
-  mirror_folder.add( effectController, 'mirror_x', -10, 50, 1 ).onChange( guiChanged );
-  mirror_folder.add( effectController, 'mirror_y', -10, 50, 1 ).onChange( guiChanged );
-  mirror_folder.add( effectController, 'mirror_z', -10, 50, 1 ).onChange( guiChanged );
+  mirror_folder.add( effectController, 'mirror_x', -10, 50, 1 ).onChange( changeGui );
+  mirror_folder.add( effectController, 'mirror_y', -10, 50, 1 ).onChange( changeGui );
+  mirror_folder.add( effectController, 'mirror_z', -10, 50, 1 ).onChange( changeGui );
   
 
   const camera_folder = gui.addFolder('Camera') 
-  camera_folder.add( effectController, 'camera_x', 0, 1000, 1 ).onChange( guiChanged );
-  camera_folder.add( effectController, 'camera_y', 0, 1000, 1 ).onChange( guiChanged );
-  camera_folder.add( effectController, 'camera_z', 0, 1000, 1 ).onChange( guiChanged );
+  camera_folder.add( effectController, 'camera_x', 0, 1000, 1 ).onChange( changeGui );
+  camera_folder.add( effectController, 'camera_y', 0, 1000, 1 ).onChange( changeGui );
+  camera_folder.add( effectController, 'camera_z', 0, 1000, 1 ).onChange( changeGui );
 
   
   const sclaer =gui.addFolder('Scaler')  
-  sclaer.add( effectController, 'index', 0, sun_altitude_angle.length-1, 1 ).onChange( guiChanged ); 
-  sclaer.add( effectController, 'scaler', 0, 50, 1 ).onChange( guiChanged ); 
-  sclaer.add( effectController, 'mirror_size', 0, 20, 1 ).onChange( guiChanged );
+  sclaer.add( effectController, 'index', 0, sun_altitude_angle.length-1, 1 ).onChange( changeGui ); 
+  sclaer.add( effectController, 'scaler', 0, 50, 1 ).onChange( changeGui ); 
+  sclaer.add( effectController, 'mirror_size', 0, 20, 1 ).onChange( changeGui );
    
   guiChanged();
 
