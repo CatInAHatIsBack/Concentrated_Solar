@@ -91,14 +91,15 @@ function initSky() {
 
   // scene.add(mirror)
 
-  /// GUI
 
+  // calling guiChanged 2 times fixes update bug.
   function changeGui() {
     guiChanged()
     guiChanged()
 
   }
 
+  /// GUI
   function guiChanged() {
 
     let index = effectController.index
